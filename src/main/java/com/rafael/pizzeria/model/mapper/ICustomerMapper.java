@@ -8,11 +8,23 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", builder = @Builder(disableBuilder = true))
 public interface ICustomerMapper {
-    @Mapping(source = "idCustomer", target = "idCustomer")
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "address", target = "address")
-    @Mapping(source = "email", target = "email")
-    @Mapping(source = "phoneNumber", target = "phoneNumber")
-    Customer toEntity(CustomerDTO customerDTO);
-    CustomerDTO toDTO(Customer customer);
+    default Customer toEntity(CustomerDTO customerDTO) {
+        Customer customer = new Customer();
+        customer.setIdCustomer(customerDTO.getIdCustomer());
+        customer.setName(customerDTO.getName());
+        customer.setAddress(customerDTO.getAddress());
+        customer.setEmail(customerDTO.getEmail());
+        customer.setPhoneNumber(customerDTO.getPhoneNumber());
+        return customer;
+    }
+
+    default CustomerDTO toDTO(Customer customer){
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setIdCustomer(customer.getIdCustomer());
+        customerDTO.setName(customer.getName());
+        customerDTO.setAddress(customer.getAddress());
+        customerDTO.setEmail(customer.getEmail());
+        customerDTO.setPhoneNumber(customer.getPhoneNumber());
+        return customerDTO;
+    }
 }

@@ -4,10 +4,18 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
-@Entity
+import java.time.LocalDateTime;
+
+@Entity()
 @Table(name = "tabla_pizza")
+@EntityListeners(AuditingEntityListener.class)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,4 +36,16 @@ public class Pizza implements Serializable {
     private Boolean vegan;
     @Column(columnDefinition = "TINYINT", nullable = false)
     private Boolean available;
+    @Column(name = "created_user")
+    @CreatedBy
+    private String createdUser;
+    @Column(name = "modified_user")
+    @LastModifiedBy
+    private String modifiedUser;
+    @Column(name = "created_date")
+    @CreatedDate
+    private LocalDateTime createdDate;
+    @Column(name = "modified_date")
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
 }

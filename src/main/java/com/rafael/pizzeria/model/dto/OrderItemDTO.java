@@ -1,8 +1,5 @@
 package com.rafael.pizzeria.model.dto;
 
-import com.rafael.pizzeria.model.entity.Order;
-import com.rafael.pizzeria.model.entity.Pizza;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

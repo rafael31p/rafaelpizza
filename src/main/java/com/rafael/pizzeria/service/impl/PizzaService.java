@@ -8,9 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class PizzaService implements IPizzaService {
+    private Logger logger = Logger.getLogger(PizzaService.class.getName());
     private final IPizzaRepository pizzaRepository;
     @Autowired
     private IPizzaMapper pizzaMapper;
@@ -33,5 +36,29 @@ public class PizzaService implements IPizzaService {
     @Override
     public boolean exists(Integer id){
         return pizzaRepository.existsById(id);
+    }
+    @Override
+    public List<PizzaDTO> getAllPizzaAvailable(){
+        return pizzaRepository.findAllByAvailableTrueOrderByPrice().stream().map(pizzaMapper::toDTO).toList();
+    }
+    @Override
+    public PizzaDTO filterPizzaByName(String name){
+        return pizzaMapper.toDTO(pizzaRepository.findFirstByAvailableTrueAndNameIgnoreCase(name));
+    }
+    @Override
+    public List<PizzaDTO> filterPizzasByContainInDescription(String description){
+        logger.log(Level.INFO, "Son Veganas: {0}", pizzaRepository.countByVeganTrue());
+        return pizzaRepository.findAllByAvailableTrueAndDescriptionContainingIgnoreCase(description).stream().map(pizzaMapper::toDTO).toList();
+    }
+    @Override
+    public List<PizzaDTO> filtarPizzaAvailableAndVegetaria(){
+        return pizzaRepository.findAllByAvailableTrueAndVegetarianTrue().stream().map(pizzaMapper::toDTO).toList();
+    }
+    @Override
+    public List<PizzaDTO> getAllPizzaNotCoteiningInTheDescription(String description){
+        return pizzaRepository.findAllByAvailableTrueAndDescriptionNotContainingIgnoreCase(description).
+                stream().
+                map(pizzaMapper::toDTO).
+                toList();
     }
 }

@@ -15,4 +15,14 @@ public interface IPizzaService {
     PizzaDTO save(PizzaDTO pizzaDTO);
 
     boolean exists(Integer id);
+
+    List<PizzaDTO> getAllPizzaAvailable();
+
+    PizzaDTO filterPizzaByName(String name);
+
+    List<PizzaDTO> filterPizzasByContainInDescription(String description);
+
+    List<PizzaDTO> filtarPizzaAvailableAndVegetaria();
+
+    List<PizzaDTO> getAllPizzaNotCoteiningInTheDescription(String description);
 }

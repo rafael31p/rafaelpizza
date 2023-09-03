@@ -3,9 +3,11 @@ package com.rafael.pizzeria.model.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
-public class PizzaDTO {
+public class PizzaDTO implements Serializable {
     private Integer idPizza;
     private String name;
     private String description;
