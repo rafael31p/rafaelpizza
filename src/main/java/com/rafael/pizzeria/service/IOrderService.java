@@ -1,6 +1,7 @@
 package com.rafael.pizzeria.service;
 
 import com.rafael.pizzeria.model.dto.OrderDTO;
+import com.rafael.pizzeria.model.dto.RamdonOrderDTO;
 import org.springframework.web.context.annotation.ApplicationScope;
 
 import java.time.LocalDateTime;
@@ -13,4 +14,6 @@ public interface   IOrderService {
     List<OrderDTO> getAllOrderDateAfter(LocalDateTime fecha);
 
     List<OrderDTO> getAllMethodByMethods(List<String> methods);
+
+    boolean saveRandomOrder(RamdonOrderDTO orderDTO);
 }

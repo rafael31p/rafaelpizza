@@ -1,10 +1,12 @@
 package com.rafael.pizzeria.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.rafael.pizzeria.model.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -12,10 +14,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "pizza_order")
+@EntityListeners(AuditingEntityListener.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order implements Serializable {
+public class Order extends Auditable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order", nullable = false)

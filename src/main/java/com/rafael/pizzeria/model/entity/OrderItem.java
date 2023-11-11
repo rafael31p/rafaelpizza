@@ -1,5 +1,6 @@
 package com.rafael.pizzeria.model.entity;
 
+import com.rafael.pizzeria.model.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItem implements Serializable {
+public class OrderItem extends Auditable implements Serializable {
     @Id
     @Column(name = "id_order", nullable = false)
     private Integer idOrder;

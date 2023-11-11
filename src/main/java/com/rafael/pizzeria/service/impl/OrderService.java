@@ -1,6 +1,7 @@
 package com.rafael.pizzeria.service.impl;
 
 import com.rafael.pizzeria.model.dto.OrderDTO;
+import com.rafael.pizzeria.model.dto.RamdonOrderDTO;
 import com.rafael.pizzeria.model.mapper.IOrderMapper;
 import com.rafael.pizzeria.repository.IOrderRepository;
 import com.rafael.pizzeria.service.IOrderService;
@@ -33,4 +34,11 @@ public class OrderService implements IOrderService {
     public List<OrderDTO> getAllMethodByMethods(List<String> methods){
         return orderRepository.findAllByMethodIn(methods).stream().map(orderMapper::toDTO).toList();
     }
+    @Override
+    public boolean saveRandomOrder(RamdonOrderDTO orderDTO){
+        return orderRepository.saveRandomOrder(orderDTO.getIdCustomer(), orderDTO.getMethod());
+    }
+    //necesito que generes un servicio que consulte las ordenes por fecha
+    //necesito que generes un servicio que consulte las ordenes por metodo de pago
+
 }

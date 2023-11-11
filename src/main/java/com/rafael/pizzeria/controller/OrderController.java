@@ -1,6 +1,7 @@
 package com.rafael.pizzeria.controller;
 
 import com.rafael.pizzeria.model.dto.OrderDTO;
+import com.rafael.pizzeria.model.dto.RamdonOrderDTO;
 import com.rafael.pizzeria.service.IOrderService;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,9 @@ public class OrderController {
     @PutMapping("/getAllByMethodForMethods")
     public ResponseEntity<List<OrderDTO>> getAllByMethodForMethods(@RequestBody List<String> methods){
         return ResponseEntity.ok(orderService.getAllMethodByMethods(methods));
+    }
+    @PutMapping("/saveRandomOrder")
+    public ResponseEntity<Boolean> saveRandomOrder(@RequestBody RamdonOrderDTO ramdonOrderDTO){
+        return ResponseEntity.ok(orderService.saveRandomOrder(ramdonOrderDTO));
     }
 }

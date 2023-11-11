@@ -1,25 +1,24 @@
 package com.rafael.pizzeria.model.entity;
 
+import com.rafael.pizzeria.model.audit.AuditPizzaListener;
+import com.rafael.pizzeria.model.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
+import lombok.ToString;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Entity()
 @Table(name = "tabla_pizza")
-@EntityListeners(AuditingEntityListener.class)
+@EntityListeners({AuditingEntityListener.class, AuditPizzaListener.class})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pizza implements Serializable {
+@ToString
+public class Pizza extends Auditable implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_pizza", nullable = false)
@@ -36,16 +35,4 @@ public class Pizza implements Serializable {
     private Boolean vegan;
     @Column(columnDefinition = "TINYINT", nullable = false)
     private Boolean available;
-    @Column(name = "created_user")
-    @CreatedBy
-    private String createdUser;
-    @Column(name = "modified_user")
-    @LastModifiedBy
-    private String modifiedUser;
-    @Column(name = "created_date")
-    @CreatedDate
-    private LocalDateTime createdDate;
-    @Column(name = "modified_date")
-    @LastModifiedDate
-    private LocalDateTime modifiedDate;
 }

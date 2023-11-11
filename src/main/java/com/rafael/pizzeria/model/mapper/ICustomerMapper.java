@@ -15,6 +15,10 @@ public interface ICustomerMapper {
         customer.setAddress(customerDTO.getAddress());
         customer.setEmail(customerDTO.getEmail());
         customer.setPhoneNumber(customerDTO.getPhoneNumber());
+        customer.setCreatedUser(customerDTO.getCreatedUser());
+        customer.setCreatedDate(customerDTO.getCreatedDate());
+        customer.setModifiedUser(customerDTO.getModifiedUser());
+        customer.setModifiedDate(customerDTO.getModifiedDate());
         return customer;
     }
 
@@ -25,6 +29,10 @@ public interface ICustomerMapper {
         customerDTO.setAddress(customer.getAddress());
         customerDTO.setEmail(customer.getEmail());
         customerDTO.setPhoneNumber(customer.getPhoneNumber());
+        customerDTO.setCreatedUser(customer.getCreatedUser());
+        customerDTO.setCreatedDate(customer.getCreatedDate());
+        customerDTO.setModifiedUser(customer.getModifiedUser());
+        customerDTO.setModifiedDate(customer.getModifiedDate());
         return customerDTO;
     }
 }

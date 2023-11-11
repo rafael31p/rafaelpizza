@@ -1,17 +1,21 @@
 package com.rafael.pizzeria.model.entity;
 
+import com.rafael.pizzeria.model.audit.Auditable;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import lombok.Builder;
 import java.io.Serializable;
 @Entity
 @Table(name = "customer")
+@EntityListeners(AuditingEntityListener.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Customer implements Serializable {
+@Builder
+public class Customer extends Auditable implements Serializable {
     @Id
     @Column(name = "id_customer", nullable = false, length = 15)
     private String idCustomer;

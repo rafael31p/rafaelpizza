@@ -1,6 +1,6 @@
 package com.rafael.pizzeria.model.dto;
 
-import com.rafael.pizzeria.model.entity.Customer;
+import com.rafael.pizzeria.model.audit.AuditableDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDTO implements Serializable {
+public class OrderDTO extends AuditableDTO implements Serializable {
     private Integer idOrder;
     private String idCustomer;
     private LocalDateTime date;
