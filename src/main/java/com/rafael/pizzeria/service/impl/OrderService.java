@@ -38,7 +38,5 @@ public class OrderService implements IOrderService {
     public boolean saveRandomOrder(RamdonOrderDTO orderDTO){
         return orderRepository.saveRandomOrder(orderDTO.getIdCustomer(), orderDTO.getMethod());
     }
-    //necesito que generes un servicio que consulte las ordenes por fecha
-    //necesito que generes un servicio que consulte las ordenes por metodo de pago
 
 }

@@ -1,5 +1,13 @@
 package com.rafael.pizzeria.exceptions;
 
-public class CustomException extends Exception{
+import java.io.Serializable;
+
+public class CustomException extends RuntimeException implements Serializable {
+    public CustomException(String message) {
+        super(message);
+    }
+    public CustomException(String message, Throwable cause) {
+        super(message, cause);
+    }
 
 }

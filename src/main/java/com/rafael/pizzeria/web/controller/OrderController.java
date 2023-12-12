@@ -1,4 +1,4 @@
-package com.rafael.pizzeria.controller;
+package com.rafael.pizzeria.web.controller;
 
 import com.rafael.pizzeria.model.dto.OrderDTO;
 import com.rafael.pizzeria.model.dto.RamdonOrderDTO;

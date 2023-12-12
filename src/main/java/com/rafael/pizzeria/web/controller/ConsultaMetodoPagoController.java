@@ -1,4 +1,4 @@
-package com.rafael.pizzeria.controller;
+package com.rafael.pizzeria.web.controller;
 
 import com.rafael.pizzeria.service.IConsultaMetodoPagoService;
 import com.rafael.pizzeria.utils.ListaObjetosDTO;
